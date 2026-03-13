@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noor — Islamic Faith Companion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span class="logo-arabic">نور</span>
+                    <span class="logo-text">Noor</span>
+                </div>
+                <p class="tagline">Your Islamic Faith Companion</p>
+            </div>
+
+            <button class="new-chat-btn" id="newChatBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 5v14M5 12h14"/>
+                </svg>
+                New Conversation
+            </button>
+
+            <div class="sidebar-section">
+                <h3>About Noor</h3>
+                <p>Noor answers questions about Islam with honesty and compassion, drawing from the Quran, Hadith, and scholarly knowledge.</p>
+            </div>
+
+            <div class="sidebar-section sources-legend">
+                <h3>Answer Sources</h3>
+                <div class="source-item">
+                    <span class="source-badge quran">Quran</span>
+                    <span>Direct Quranic verse</span>
+                </div>
+                <div class="source-item">
+                    <span class="source-badge hadith">Hadith</span>
+                    <span>Prophet's ﷺ teachings</span>
+                </div>
+                <div class="source-item">
+                    <span class="source-badge consensus">Consensus</span>
+                    <span>Scholarly agreement</span>
+                </div>
+                <div class="source-item">
+                    <span class="source-badge opinion">Opinion</span>
+                    <span>Scholarly views</span>
+                </div>
+            </div>
+
+            <div class="sidebar-footer">
+                <p>Answers are for guidance only. For important matters, please consult a qualified Islamic scholar.</p>
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="main-content">
+            <header class="chat-header">
+                <button class="menu-toggle" id="menuToggle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 12h18M3 6h18M3 18h18"/>
+                    </svg>
+                </button>
+                <div class="header-title">
+                    <span class="header-arabic">نور</span>
+                    <span>Noor — Islamic Faith Companion</span>
+                </div>
+            </header>
+
+            <div class="chat-messages" id="chatMessages">
+                <!-- Welcome screen -->
+                <div class="welcome-screen" id="welcomeScreen">
+                    <div class="welcome-content">
+                        <div class="welcome-logo">
+                            <span class="welcome-arabic">نور</span>
+                        </div>
+                        <h1>As-salamu alaykum</h1>
+                        <p class="welcome-subtitle">I'm Noor, your Islamic faith companion. Ask me anything about Islam — from the meaning of a verse to guidance on daily life. All questions are welcome here.</p>
+
+                        <div class="suggested-questions">
+                            <h3>You might ask about:</h3>
+                            <div class="questions-grid">
+                                <button class="suggestion-btn" data-question="What does the Quran say about patience during hardship?">
+                                    What does the Quran say about patience during hardship?
+                                </button>
+                                <button class="suggestion-btn" data-question="How do I perform the five daily prayers?">
+                                    How do I perform the five daily prayers?
+                                </button>
+                                <button class="suggestion-btn" data-question="What is the significance of Ramadan in Islam?">
+                                    What is the significance of Ramadan?
+                                </button>
+                                <button class="suggestion-btn" data-question="How does Islam view forgiveness and seeking repentance?">
+                                    How does Islam view forgiveness and repentance?
+                                </button>
+                                <button class="suggestion-btn" data-question="What does Islam teach about mental health and depression?">
+                                    What does Islam teach about mental health?
+                                </button>
+                                <button class="suggestion-btn" data-question="What are the 99 names of Allah and their meanings?">
+                                    What are the 99 names of Allah?
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Messages will be appended here -->
+                <div id="messagesContainer"></div>
+            </div>
+
+            <div class="chat-input-area">
+                <div class="input-container">
+                    <textarea
+                        id="userInput"
+                        placeholder="Ask anything about Islam..."
+                        rows="1"
+                        maxlength="4000"
+                    ></textarea>
+                    <button id="sendBtn" class="send-btn" disabled>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 2L11 13M22 2L15 22L11 13L2 9L22 2Z"/>
+                        </svg>
+                    </button>
+                </div>
+                <p class="input-disclaimer">Noor provides guidance based on Islamic sources. For critical matters, consult a qualified scholar.</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
