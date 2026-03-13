@@ -1,12 +1,23 @@
-.env
-__pycache__/
-*.pyc
-*.pyo
-.venv/
-venv/
-env/
-*.egg-info/
-dist/
-build/
+# Backend
+backend/.env
+backend/__pycache__/
+backend/*.pyc
+backend/.venv/
+backend/venv/
+
+# Mobile
+mobile/node_modules/
+mobile/.expo/
+mobile/dist/
+mobile/build/
+mobile/*.jks
+mobile/*.p8
+mobile/*.p12
+mobile/*.key
+mobile/*.mobileprovision
+mobile/npm-debug.*
+mobile/yarn-error.*
+
+# General
 .DS_Store
 *.log

@@ -63,8 +63,23 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/chat", methods=["POST"])
+def add_cors_headers(response):
+    """Allow mobile app on local network to reach the API."""
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    response.headers["Access-Control-Allow-Headers"] = "Content-Type"
+    response.headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
+    return response
+
+
+app.after_request(add_cors_headers)
+
+
+@app.route("/chat", methods=["POST", "OPTIONS"])
 def chat():
+    """SSE streaming endpoint (used by the web app)."""
+    if request.method == "OPTIONS":
+        return "", 204
+
     data = request.get_json()
     messages = data.get("messages", [])
 
@@ -93,5 +108,35 @@ def chat():
     )
 
 
+@app.route("/api/chat", methods=["POST", "OPTIONS"])
+def api_chat():
+    """Non-streaming JSON endpoint used by the React Native mobile app."""
+    if request.method == "OPTIONS":
+        return "", 204
+
+    data = request.get_json()
+    messages = data.get("messages", [])
+
+    if not messages:
+        return jsonify({"error": "No messages provided"}), 400
+
+    response = client.messages.create(
+        model="claude-opus-4-6",
+        max_tokens=2048,
+        system=SYSTEM_PROMPT,
+        messages=messages,
+        thinking={"type": "adaptive"},
+    )
+
+    text = next((b.text for b in response.content if b.type == "text"), "")
+    return jsonify({"text": text})
+
+
+@app.route("/health")
+def health():
+    return jsonify({"status": "ok"})
+
+
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    # Bind to 0.0.0.0 so the iPhone on the same WiFi can reach this server
+    app.run(debug=True, host="0.0.0.0", port=5000)
