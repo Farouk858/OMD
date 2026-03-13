@@ -1,11 +1,10 @@
 // API Configuration
-// During development: replace with your Mac's local IP address.
-// Find it with: ifconfig | grep "inet " (Mac/Linux)
-// Example: http://192.168.1.42:5000
+// Replace this with your Render backend URL once deployed.
+// Example: https://on-my-deen-api.onrender.com
 //
-// For production: replace with your deployed backend URL.
+// For local dev via Codespaces: use the forwarded URL from the Ports tab.
 
-export const API_BASE_URL = 'http://YOUR_MAC_IP:5000';
+export const API_BASE_URL = 'https://YOUR_APP.onrender.com';
 
 export const ENDPOINTS = {
   chat: `${API_BASE_URL}/api/chat`,
