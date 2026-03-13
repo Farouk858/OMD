@@ -4,7 +4,7 @@
 //
 // For local dev via Codespaces: use the forwarded URL from the Ports tab.
 
-export const API_BASE_URL = 'https://YOUR_APP.onrender.com';
+export const API_BASE_URL = 'https://omd.onrender.com';
 
 export const ENDPOINTS = {
   chat: `${API_BASE_URL}/api/chat`,
